@@ -1,0 +1,10 @@
+data <- read.csv("mice_pheno.csv")
+data <- na.omit(data)
+library(dplyr)
+library(rafalib)
+y <- filter(data, Diet=="chow" & Sex=="M") %>% select(Bodyweight) %>% unlist
+popsd <- popsd(y)
+popmean <- mean(y)
+pnorm(popmean+(popsd), popmean, popsd)-pnorm((popmean-popsd), popmean, popsd)
+pnorm(40, popmean, popsd)
+hist(y)
