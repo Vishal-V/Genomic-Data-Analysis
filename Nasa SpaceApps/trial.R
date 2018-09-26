@@ -1,0 +1,8 @@
+library(dplyr)
+library(rafalib)
+data <- read.csv("solar radiation.csv")
+wind <- read.csv("wind speed.csv")
+comb <- read.csv("combined.csv")
+library("rjson")
+result <- fromJSON(file = "forecasts.json")
+result <- as.data.frame(result)
